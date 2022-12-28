@@ -1,5 +1,27 @@
-function setup()
+song2 = "" ;
+song1 = "" ;
+
+function preload() 
 {
-    canvas = createCanvas(400,400) ;
-    canvas.position(550,250) ;
+    song1 = loadSound("music.mp3") ;
+    song2 = loadSound("2.mp3") ;
+}
+
+function setup() 
+{
+    canvas = createCanvas(600,500) ;
+    canvas.center() ;
+
+    video = createCapture(VIDEO) ;
+    video.hide() ;
+}
+
+function draw() 
+{
+    image(video,0,0,600,500) ;
+}
+
+function play() 
+{
+    song1.play() ;
 }
