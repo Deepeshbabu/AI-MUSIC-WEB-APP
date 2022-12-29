@@ -1,5 +1,9 @@
-song2 = "" ;
+lwY = 0 ;
+lwX = 0 ;
+rwX = 0 ;
+rwY = 0 ;
 song1 = "" ;
+song2 = "" ;
 
 function preload() 
 {
@@ -14,6 +18,30 @@ function setup()
 
     video = createCapture(VIDEO) ;
     video.hide() ;
+
+    poseNet  = ml5.poseNet(video, modelLoaded) ;
+    poseNet.on('pose', gotPoses) ;
+}
+
+function gotPoses(results) 
+{
+    if(results.length>0)
+    {
+        console.log(results);
+
+        lwX = results[0].pose.leftWrist.x ;
+        lwY = results[0].pose.leftWrist.y ;
+        console.log(lwX,lwY);
+
+        rwX = results[0].pose.rightWrist.x ;
+        rwY = results[0].pose.rightWrist.y ;
+        console.log(rwX,rwY);
+    }
+}
+
+function modelLoaded() 
+{
+    console.log("PoseNet Is Initialized!");    
 }
 
 function draw() 
@@ -23,5 +51,7 @@ function draw()
 
 function play() 
 {
-    song1.play() ;
+    song2.play() ;
+    song2.setVolume(1) ;
+    song2.rate(1) ;
 }
