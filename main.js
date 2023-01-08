@@ -65,6 +65,13 @@ function draw()
         st1 = "true" ;
         document.getElementById("songname").innerHTML = "Song Name : " + "DJ Music" ;
         st2 = "false" ;
+        if(st1 = "false") 
+        {
+            song2.stop() ;
+            song1.play() ;
+            song1.setVolume(1) ;
+            song1.rate(1) ;
+        }
     }
 
     if(srw > 0.2) 
@@ -73,22 +80,13 @@ function draw()
         st1 = "false" ;
         document.getElementById("songname").innerHTML = "Song Name : " + "Alex something something ...." ;
         st2 = "true" ;
-    }
-
-    if(st1 = "true") 
-    {
-        song2.stop() ;
-        song1.play() ;
-        song1.setVolume(1) ;
-        song1.rate(1) ;
-    }
-
-    if(st2 = "true") 
-    {
-        song1.stop() ;
-        song2.play() ;
-        song2.setVolume(1) ;
-        song2.rate(1) ;
+        if(st2 = "false") 
+        {
+            song1.stop() ;
+            song2.play() ;
+            song2.setVolume(1) ;
+            song2.rate(1) ;
+        }
     }
 }
 
